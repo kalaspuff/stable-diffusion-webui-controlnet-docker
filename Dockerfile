@@ -93,33 +93,14 @@ RUN git clone https://github.com/Mikubill/sd-webui-controlnet /app/stable-diffus
     && (cd /app/stable-diffusion-webui/extensions/sd-webui-controlnet && git checkout 5c74f300c3ac04323963af80dd2b971a7c2b2b29) \
     && mkdir -p /app/stable-diffusion-webui/models/ControlNet
 
-# SD 2.1 768 base model
-RUN aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/stabilityai/stable-diffusion-2-1/resolve/36a01dc742066de2e8c91e7cf0b8f6b53ef53da1/v2-1_768-ema-pruned.safetensors -d /app/stable-diffusion-webui/models/Stable-diffusion -o v2-1_768-ema-pruned.safetensors
-RUN aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://raw.githubusercontent.com/Stability-AI/stablediffusion/fc1488421a2761937b9d54784194157882cbc3b1/configs/stable-diffusion/v2-inference-v.yaml -d /app/stable-diffusion-webui/models/Stable-diffusion -o v2-1_768-ema-pruned.yaml
-
-# SD 1.5 base model
-RUN aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors -d /app/stable-diffusion-webui/models/Stable-diffusion -o v1-5-pruned-emaonly.safetensors
-RUN aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-inference.yaml -d /app/stable-diffusion-webui/models/Stable-diffusion -o v1-5-pruned-emaonly.yaml
-
-# Dreamlike Diffusion 1.0 model
-RUN aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/dreamlike-art/dreamlike-diffusion-1.0/resolve/00cbe4d56fd56f45e952a5be4d847f21b9782546/dreamlike-diffusion-1.0.safetensors -d /app/stable-diffusion-webui/models/Stable-diffusion -o dreamlike-diffusion-1.0.safetensors
-
-# Pre-extracted controlnet models
-RUN aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/87c3affbcad3baec52ffe39cac3a15a94902aed3/cldm_v15.yaml -d /app/stable-diffusion-webui/models/ControlNet -o cldm_v15.yaml
-RUN aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/87c3affbcad3baec52ffe39cac3a15a94902aed3/cldm_v21.yaml -d /app/stable-diffusion-webui/models/ControlNet -o cldm_v21.yaml
-RUN aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/87c3affbcad3baec52ffe39cac3a15a94902aed3/control_canny-fp16.safetensors -d /app/stable-diffusion-webui/models/ControlNet -o control_canny-fp16.safetensors
-RUN aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/87c3affbcad3baec52ffe39cac3a15a94902aed3/control_depth-fp16.safetensors -d /app/stable-diffusion-webui/models/ControlNet -o control_depth-fp16.safetensors
-RUN aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/87c3affbcad3baec52ffe39cac3a15a94902aed3/control_hed-fp16.safetensors -d /app/stable-diffusion-webui/models/ControlNet -o control_hed-fp16.safetensors
-RUN aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/87c3affbcad3baec52ffe39cac3a15a94902aed3/control_mlsd-fp16.safetensors -d /app/stable-diffusion-webui/models/ControlNet -o control_mlsd-fp16.safetensors
-RUN aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/87c3affbcad3baec52ffe39cac3a15a94902aed3/control_normal-fp16.safetensors -d /app/stable-diffusion-webui/models/ControlNet -o control_normal-fp16.safetensors
-RUN aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/87c3affbcad3baec52ffe39cac3a15a94902aed3/control_openpose-fp16.safetensors -d /app/stable-diffusion-webui/models/ControlNet -o control_openpose-fp16.safetensors
-RUN aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/87c3affbcad3baec52ffe39cac3a15a94902aed3/control_scribble-fp16.safetensors -d /app/stable-diffusion-webui/models/ControlNet -o control_scribble-fp16.safetensors
-RUN aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/87c3affbcad3baec52ffe39cac3a15a94902aed3/control_seg-fp16.safetensors -d /app/stable-diffusion-webui/models/ControlNet -o control_seg-fp16.safetensors
-
 # Prepare WebUI environment
 COPY config.json ui-config.json /app/
 WORKDIR /app/stable-diffusion-webui
 RUN python launch.py --exit --skip-torch-cuda-test
+
+# Copy startup scripts
+COPY run.py on_start.sh /app/stable-diffusion-webui/
+RUN chmod +x on_start.sh
 
 # Run app as non-root user
 RUN adduser --disabled-password --gecos '' user
@@ -128,4 +109,4 @@ USER user
 
 EXPOSE 7860
 
-CMD ["python", "webui.py", "--force-enable-xformers", "--ui-config-file", "/app/ui-config.json", "--ui-settings-file", "/app/config.json", "--disable-console-progressbars", "--cors-allow-origins", "huggingface.co,hf.space", "--no-progressbar-hiding", "--api", "--skip-version-check"]
+CMD ["python", "run.py", "--force-enable-xformers", "--ui-config-file", "/app/ui-config.json", "--ui-settings-file", "/app/config.json", "--disable-console-progressbars", "--cors-allow-origins", "huggingface.co,hf.space", "--no-progressbar-hiding", "--no-download-sd-model", "--api", "--skip-version-check"]
