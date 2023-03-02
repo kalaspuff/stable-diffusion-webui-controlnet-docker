@@ -122,10 +122,9 @@ WORKDIR /app/stable-diffusion-webui
 RUN python launch.py --exit --skip-torch-cuda-test
 
 # Run app as non-root user
-# RUN adduser --disabled-password --gecos '' user
-# RUN chown -R user:user /app
-# RUN chmod 755 /app
-# USER user
+RUN adduser --disabled-password --gecos '' user
+RUN chown -R user:user /app
+USER user
 
 EXPOSE 7860
 
