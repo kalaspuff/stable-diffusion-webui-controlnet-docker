@@ -77,8 +77,8 @@ RUN poetry install
 # Install xformers for the specified GPU
 ARG GPU
 RUN case "$GPU" in \
-        [aA]10[gG]) pip install https://github.com/camenduru/stable-diffusion-webui-colab/releases/download/0.0.16/xformers-0.0.16+814314d.d20230119.A10G-cp310-cp310-linux_x86_64.whl;; \
-        [tT]4) pip install https://github.com/camenduru/stable-diffusion-webui-colab/releases/download/0.0.16/xformers-0.0.16+814314d.d20230118-cp310-cp310-linux_x86_64.whl;; \
+        [aA]10[gG]) /opt/venv/bin/pip install https://github.com/camenduru/stable-diffusion-webui-colab/releases/download/0.0.16/xformers-0.0.16+814314d.d20230119.A10G-cp310-cp310-linux_x86_64.whl;; \
+        [tT]4) /opt/venv/bin/pip install https://github.com/camenduru/stable-diffusion-webui-colab/releases/download/0.0.16/xformers-0.0.16+814314d.d20230118-cp310-cp310-linux_x86_64.whl;; \
         *) echo "invalid GPU setting"; exit 1;; \
     esac
 
