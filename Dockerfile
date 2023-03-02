@@ -94,8 +94,8 @@ RUN git clone https://github.com/Mikubill/sd-webui-controlnet /app/stable-diffus
     && mkdir -p /app/stable-diffusion-webui/models/ControlNet
 
 # Prepare WebUI environment
-COPY config.json ui-config.json /app/
 WORKDIR /app/stable-diffusion-webui
+COPY config.json ui-config.json /app/stable-diffusion-webui/
 RUN python launch.py --exit --skip-torch-cuda-test
 
 # Copy startup scripts
@@ -109,4 +109,4 @@ USER user
 
 EXPOSE 7860
 
-CMD ["python", "run.py", "--force-enable-xformers", "--ui-config-file", "/app/ui-config.json", "--ui-settings-file", "/app/config.json", "--disable-console-progressbars", "--cors-allow-origins", "huggingface.co,hf.space", "--no-progressbar-hiding", "--no-download-sd-model", "--api", "--skip-version-check"]
+CMD ["python", "run.py", "--force-enable-xformers", "--ui-config-file", "ui-config.json", "--ui-settings-file", "config.json", "--disable-console-progressbars", "--cors-allow-origins", "huggingface.co,hf.space", "--no-progressbar-hiding", "--no-download-sd-model", "--api", "--skip-version-check"]
