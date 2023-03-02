@@ -115,7 +115,8 @@ RUN aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co
 
 # Prepare WebUI environment
 COPY config.json ui-config.json /app/
-RUN python stable-diffusion-webui/launch.py --exit --skip-torch-cuda-test
+WORKDIR /app/stable-diffusion-webui
+RUN python launch.py --exit --skip-torch-cuda-test
 
 # Run app as non-root user
 # RUN adduser --disabled-password --gecos '' user
@@ -125,4 +126,4 @@ RUN python stable-diffusion-webui/launch.py --exit --skip-torch-cuda-test
 
 EXPOSE 7860
 
-CMD ["python", "stable-diffusion-webui/launch.py", "--force-enable-xformers", "--ui-config-file", "/app/ui-config.json", "--ui-settings-file", "/app/config.json", "--disable-console-progressbars", "--enable-console-prompts", "--cors-allow-origins", "huggingface.co,hf.space", "--no-progressbar-hiding", "--api", "--skip-torch-cuda-test", "--skip-install"]
+CMD ["python", "launch.py", "--force-enable-xformers", "--ui-config-file", "/app/ui-config.json", "--ui-settings-file", "/app/config.json", "--disable-console-progressbars", "--enable-console-prompts", "--cors-allow-origins", "huggingface.co,hf.space", "--no-progressbar-hiding", "--api", "--skip-torch-cuda-test", "--skip-install"]
