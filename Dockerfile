@@ -115,7 +115,7 @@ RUN aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co
 
 # Prepare WebUI environment
 COPY config.json ui-config.json /app/
-RUN python stable-diffusion-webui/launch.py --exit
+RUN python stable-diffusion-webui/launch.py --exit --skip-torch-cuda-test
 
 # Run app as non-root user
 # RUN adduser --disabled-password --gecos '' user
