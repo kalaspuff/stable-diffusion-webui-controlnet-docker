@@ -1,0 +1,10 @@
+[tool.poetry]
+name = "stable-diffusion-webui-docker"
+version = "0"
+description = ""
+authors = [""]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.11"
+triton = { version = ">=2.0.0a2", allow-prereleases = true, markers = "platform_machine == 'x86_64' and platform_system == 'Linux'" }
+numexpr = "^2.8.0"
