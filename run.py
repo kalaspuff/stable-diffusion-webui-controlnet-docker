@@ -14,7 +14,7 @@ def start():
     on_start()
 
     print(f"Launching {'API server' if '--nowebui' in sys.argv else 'Web UI'} with arguments: {' '.join(sys.argv[1:])}")
-    import webui  # noqa
+    import webui  # type: ignore  # noqa
     if '--nowebui' in sys.argv:
         webui.api_only()
     else:
