@@ -89,7 +89,6 @@ RUN git clone -b v1.6 https://github.com/camenduru/deforum-for-automatic1111-web
 RUN git clone -b v2.0 https://github.com/camenduru/stable-diffusion-webui-images-browser /app/stable-diffusion-webui/extensions/stable-diffusion-webui-images-browser
 RUN git clone -b v2.0 https://github.com/camenduru/sd-civitai-browser /app/stable-diffusion-webui/extensions/sd-civitai-browser
 RUN git clone -b v1.6 https://github.com/camenduru/sd-webui-additional-networks /app/stable-diffusion-webui/extensions/sd-webui-additional-networks
-RUN git clone -b v1.6 https://github.com/camenduru/sd-webui-tunnels /app/stable-diffusion-webui/extensions/sd-webui-tunnels
 RUN git clone https://github.com/Mikubill/sd-webui-controlnet /app/stable-diffusion-webui/extensions/sd-webui-controlnet \
     && (cd /app/stable-diffusion-webui/extensions/sd-webui-controlnet && git checkout 5c74f300c3ac04323963af80dd2b971a7c2b2b29) \
     && mkdir -p /app/stable-diffusion-webui/models/ControlNet
@@ -126,4 +125,4 @@ RUN python launch.py --exit --skip-torch-cuda-test
 
 EXPOSE 7860
 
-CMD ["python", "launch.py", "--force-enable-xformers", "--ui-config-file", "/app/ui-config.json", "--ui-settings-file", "/app/config.json", "--disable-console-progressbars", "--enable-console-prompts", "--cors-allow-origins", "huggingface.co,hf.space", "--no-progressbar-hiding", "--api", "--skip-torch-cuda-test", "--skip-install"]
+CMD ["python", "webui.py", "--force-enable-xformers", "--ui-config-file", "/app/ui-config.json", "--ui-settings-file", "/app/config.json", "--disable-console-progressbars", "--cors-allow-origins", "huggingface.co,hf.space", "--no-progressbar-hiding", "--api", "--skip-version-check"]
