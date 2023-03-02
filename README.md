@@ -6,6 +6,12 @@ colorTo: yellow
 sdk: docker
 app_port: 7860
 pinned: true
+models:
+  - stabilityai/stable-diffusion-2-1
+  - runwayml/stable-diffusion-v1-5
+  - lllyasviel/ControlNet
+  - webui/ControlNet-modules-safetensors
+  - dreamlike-art/dreamlike-diffusion-1.0
 ---
 
 ## Stable Diffusion WebUI + ControlNet
