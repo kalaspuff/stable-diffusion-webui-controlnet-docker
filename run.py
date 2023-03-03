@@ -4,7 +4,7 @@ import sys
 
 
 def on_start():
-    print("Executing './on_start.sh' (downloading models, etc.)")
+    print("Executing './on_start.sh' (that installs xformers, downloads models, etc.)")
     result = subprocess.run("./on_start.sh", shell=True, env=os.environ)
     if result.returncode != 0:
         raise RuntimeError(f"Error executing ./on_start.sh [exit code: {result.returncode}]")
