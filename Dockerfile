@@ -67,12 +67,12 @@ RUN echo "export PATH=$PATH" >> ~/.bashrc \
     && /opt/venv/bin/pip install --upgrade --no-cache-dir pip
 
 # Run app as non-root user
+WORKDIR /app
 RUN adduser --disabled-password --gecos '' user
 RUN chown -R user:user /app /opt/venv
 USER user
 
 # Installation of basic Python dependencies specified in pyproject.toml
-WORKDIR /app
 COPY pyproject.toml poetry.lock /app/
 RUN poetry install
 
