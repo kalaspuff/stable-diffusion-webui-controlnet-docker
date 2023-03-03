@@ -73,6 +73,7 @@ RUN echo "export PATH=$PATH" >> /home/user/.bashrc \
 
 # Run as non-root user
 USER user
+WORKDIR /app
 
 # Installation of basic Python dependencies specified in pyproject.toml
 COPY --chown=user:user pyproject.toml poetry.lock /app/
