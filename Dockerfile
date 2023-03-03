@@ -85,11 +85,11 @@ RUN git clone https://github.com/Mikubill/sd-webui-controlnet /app/stable-diffus
 # Prepare WebUI environment
 WORKDIR /app/stable-diffusion-webui
 COPY config.json ui-config.json /app/stable-diffusion-webui/
-RUN /opt/venv/bin/python launch.py --exit --skip-torch-cuda-test
+RUN /opt/venv/bin/python launch.py --exit --skip-torch-cuda-test --xformers
 
 RUN sed -i -e 's/                show_progress=False,/                show_progress=True,/g' modules/ui.py
 RUN sed -i -e 's/shared.demo.launch/shared.demo.queue().launch/g' webui.py
-RUN sed -i -e 's/ outputs=\[/queue=False, &/g' modules/ui.py
+# RUN sed -i -e 's/ outputs=\[/queue=False, &/g' modules/ui.py
 
 # Copy startup scripts
 COPY run.py on_start.sh /app/stable-diffusion-webui/
@@ -97,7 +97,7 @@ RUN chmod +x on_start.sh
 
 # Run app as non-root user
 RUN adduser --disabled-password --gecos '' user
-RUN chown -R user:user /app /opt/venv
+RUN chown -R user:user /app
 USER user
 
 EXPOSE 7860
