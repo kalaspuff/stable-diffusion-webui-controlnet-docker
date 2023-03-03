@@ -1,6 +1,3 @@
-# GPU should be set to either "A10G" or "T4"
-ARG GPU=A10G
-
 FROM nvidia/cuda:11.7.1-cudnn8-devel-ubuntu22.04
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -74,14 +71,6 @@ WORKDIR /app
 COPY pyproject.toml poetry.lock /app/
 RUN poetry install
 
-# Install xformers for the specified GPU
-ARG GPU
-RUN case "$GPU" in \
-        [aA]10[gG]) /opt/venv/bin/pip install https://github.com/camenduru/stable-diffusion-webui-colab/releases/download/0.0.16/xformers-0.0.16+814314d.d20230119.A10G-cp310-cp310-linux_x86_64.whl;; \
-        [tT]4) /opt/venv/bin/pip install https://github.com/camenduru/stable-diffusion-webui-colab/releases/download/0.0.16/xformers-0.0.16+814314d.d20230118-cp310-cp310-linux_x86_64.whl;; \
-        *) echo "invalid GPU setting"; exit 1;; \
-    esac
-
 # WebUI + extensions
 RUN git clone -b v2.0 https://github.com/camenduru/stable-diffusion-webui
 RUN wget https://raw.githubusercontent.com/camenduru/stable-diffusion-webui-scripts/main/run_n_times.py -O /app/stable-diffusion-webui/scripts/run_n_times.py
@@ -98,6 +87,10 @@ WORKDIR /app/stable-diffusion-webui
 COPY config.json ui-config.json /app/stable-diffusion-webui/
 RUN python launch.py --exit --skip-torch-cuda-test
 
+RUN sed -i -e 's/                show_progress=False,/                show_progress=True,/g' modules/ui.py
+RUN sed -i -e 's/shared.demo.launch/shared.demo.queue().launch/g' webui.py
+RUN sed -i -e 's/ outputs=\[/queue=False, &/g' modules/ui.py
+
 # Copy startup scripts
 COPY run.py on_start.sh /app/stable-diffusion-webui/
 RUN chmod +x on_start.sh
@@ -109,4 +102,4 @@ USER user
 
 EXPOSE 7860
 
-CMD ["python", "run.py", "--force-enable-xformers", "--ui-config-file", "ui-config.json", "--ui-settings-file", "config.json", "--disable-console-progressbars", "--cors-allow-origins", "huggingface.co,hf.space", "--no-progressbar-hiding", "--no-download-sd-model", "--api", "--skip-version-check"]
+CMD ["/opt/venv/bin/python", "run.py", "--force-enable-xformers", "--xformers", "--listen", "--enable-insecure-extension-access", "--ui-config-file", "ui-config.json", "--ui-settings-file", "config.json", "--disable-console-progressbars", "--cors-allow-origins", "huggingface.co,hf.space", "--no-progressbar-hiding", "--enable-console-prompts", "--no-download-sd-model", "--api", "--skip-version-check"]

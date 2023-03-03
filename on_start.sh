@@ -1,6 +1,18 @@
 #!/bin/bash
 set -euo pipefail
 
+echo "\$ nvidia smi"
+nvidia-smi
+
+# Install xformers matching the GPU (only for Nvidia A10G and T4 GPUs)
+if nvidia-smi --query-gpu=gpu_name --format=csv,noheader | grep -q A10G; then
+    /opt/venv/bin/pip install https://github.com/camenduru/stable-diffusion-webui-colab/releases/download/0.0.16/xformers-0.0.16+814314d.d20230119.A10G-cp310-cp310-linux_x86_64.whl
+elif nvidia-smi --query-gpu=gpu_name --format=csv,noheader | grep -q T4; then
+    /opt/venv/bin/pip install https://github.com/camenduru/stable-diffusion-webui-colab/releases/download/0.0.16/xformers-0.0.16+814314d.d20230118-cp310-cp310-linux_x86_64.whl
+else
+    /opt/venv/bin/pip install --pre xformers
+fi
+
 # SD 2.1 768 base model
 aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/stabilityai/stable-diffusion-2-1/resolve/36a01dc742066de2e8c91e7cf0b8f6b53ef53da1/v2-1_768-ema-pruned.safetensors -d /app/stable-diffusion-webui/models/Stable-diffusion -o v2-1_768-ema-pruned.safetensors
 aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://raw.githubusercontent.com/Stability-AI/stablediffusion/fc1488421a2761937b9d54784194157882cbc3b1/configs/stable-diffusion/v2-inference-v.yaml -d /app/stable-diffusion-webui/models/Stable-diffusion -o v2-1_768-ema-pruned.yaml
@@ -8,6 +20,9 @@ aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://raw.githubusercont
 # SD 1.5 base model
 aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors -d /app/stable-diffusion-webui/models/Stable-diffusion -o v1-5-pruned-emaonly.safetensors
 aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-inference.yaml -d /app/stable-diffusion-webui/models/Stable-diffusion -o v1-5-pruned-emaonly.yaml
+
+# VAE
+aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors -d /app/stable-diffusion-webui/models/VAE -o vae-ft-mse-840000-ema-pruned.safetensors
 
 # Dreamlike Diffusion 1.0 model
 aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/dreamlike-art/dreamlike-diffusion-1.0/resolve/00cbe4d56fd56f45e952a5be4d847f21b9782546/dreamlike-diffusion-1.0.safetensors -d /app/stable-diffusion-webui/models/Stable-diffusion -o dreamlike-diffusion-1.0.safetensors

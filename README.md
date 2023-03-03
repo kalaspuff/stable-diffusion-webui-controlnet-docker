@@ -6,6 +6,10 @@ colorTo: yellow
 sdk: docker
 app_port: 7860
 pinned: true
+tags:
+  - stable-diffusion
+  - stable-diffusion-diffusers
+  - text-to-image
 models:
   - stabilityai/stable-diffusion-2-1
   - runwayml/stable-diffusion-v1-5
@@ -23,15 +27,8 @@ Uses Stable Diffusion 2.1 models. Comes with several popular extensions to [AUTO
 ### Setup on Hugging Face
 
 1. Duplicate this space to your Hugging Face account or clone this repo to your account.
-
-2. Within your duplicated space under *"Files and versions"*, specify the GPU model in the first lines of the [`Dockerfile`](./Dockerfile#L2) to match the hardware you're going to be using for your space.
-
-   ```Dockerfile
-   # GPU should be set to either "A10G" or "T4"
-   ARG GPU=A10G
-   ```
-
-3. Under the *"Settings"* tab of your space you can choose which hardware for your space, that you will also be billed for.
+2. Under the *"Settings"* tab of your space you can choose which hardware for your space, that you will also be billed for.
+3. The [`on_start.sh`](./on_start.sh) file will be run when the container is started, right before the webui is initiated. This is where you can install any additional extensions or models you may need.
 
 ---
 

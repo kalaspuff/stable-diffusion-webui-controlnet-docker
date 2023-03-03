@@ -13,6 +13,7 @@ def on_start():
 def start():
     on_start()
 
+    print("---------------")
     print(f"Launching {'API server' if '--nowebui' in sys.argv else 'Web UI'} with arguments: {' '.join(sys.argv[1:])}")
     import webui  # type: ignore  # noqa
     if '--nowebui' in sys.argv:
