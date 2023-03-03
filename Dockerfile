@@ -66,6 +66,11 @@ RUN echo "export PATH=$PATH" >> ~/.bashrc \
     && python3 -m venv $VIRTUAL_ENV \
     && /opt/venv/bin/pip install --upgrade --no-cache-dir pip
 
+# Run app as non-root user
+RUN adduser --disabled-password --gecos '' user
+RUN chown -R user:user /app /opt/venv
+USER user
+
 # Installation of basic Python dependencies specified in pyproject.toml
 WORKDIR /app
 COPY pyproject.toml poetry.lock /app/
@@ -96,11 +101,6 @@ RUN sed -i -e 's/               queue=False,  /                /g' modules/ui.py
 # Copy startup scripts
 COPY run.py on_start.sh /app/stable-diffusion-webui/
 RUN chmod +x on_start.sh
-
-# Run app as non-root user
-RUN adduser --disabled-password --gecos '' user
-RUN chown -R user:user /app
-USER user
 
 EXPOSE 7860
 
