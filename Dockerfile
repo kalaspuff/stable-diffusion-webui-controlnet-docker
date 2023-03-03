@@ -87,9 +87,11 @@ WORKDIR /app/stable-diffusion-webui
 COPY config.json ui-config.json /app/stable-diffusion-webui/
 RUN /opt/venv/bin/python launch.py --exit --skip-torch-cuda-test --xformers
 
+# Patch WebUI
 RUN sed -i -e 's/                show_progress=False,/                show_progress=True,/g' modules/ui.py
 RUN sed -i -e 's/shared.demo.launch/shared.demo.queue().launch/g' webui.py
-# RUN sed -i -e 's/ outputs=\[/queue=False, &/g' modules/ui.py
+RUN sed -i -e 's/ outputs=\[/queue=False, &/g' modules/ui.py
+RUN sed -i -e 's/               queue=False,  /                /g' modules/ui.py
 
 # Copy startup scripts
 COPY run.py on_start.sh /app/stable-diffusion-webui/
