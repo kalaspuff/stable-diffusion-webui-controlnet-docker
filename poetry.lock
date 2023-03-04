@@ -401,14 +401,7 @@ category = "main"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "torchvision-0.14.1+cu117-cp310-cp310-linux_x86_64.whl", hash = "sha256:83d271a530392814b8c7f69382285cac7c7da79b8f5dcc6bcf56c628547bce53"},
-    {file = "torchvision-0.14.1+cu117-cp310-cp310-win_amd64.whl", hash = "sha256:b39fc67e7131053d435804d7901e88528611c0832fd9f1cc26476b5a27cc5d81"},
-    {file = "torchvision-0.14.1+cu117-cp37-cp37m-linux_x86_64.whl", hash = "sha256:bce3a15aa1ae72572f8cd28e49d1ec1ad8f0866fbb661c7368d9c1285f69b22e"},
-    {file = "torchvision-0.14.1+cu117-cp37-cp37m-win_amd64.whl", hash = "sha256:de04a6a5659d8b800c49602697c2534f9be409139cf37b516080300eca3a2487"},
-    {file = "torchvision-0.14.1+cu117-cp38-cp38-linux_x86_64.whl", hash = "sha256:7409385139ce8864ceb2c82ffce338ebe15a55193f4b80c42a6d0f9cfd781629"},
-    {file = "torchvision-0.14.1+cu117-cp38-cp38-win_amd64.whl", hash = "sha256:39846a1ed944964fe35d98da806b629c9d4294d6a5b069a097b0954f6c7da493"},
-    {file = "torchvision-0.14.1+cu117-cp39-cp39-linux_x86_64.whl", hash = "sha256:8a89a0ee007d7cdba53bd56426d8795060a064b8919b61ac39e00e399ded6be2"},
-    {file = "torchvision-0.14.1+cu117-cp39-cp39-win_amd64.whl", hash = "sha256:c9fa805e58971ad0d8f4810b8e56f2b260939297ff564a988cf0194f31bd5d69"},
+    {file = "torchvision-0.14.1%2Bcu117-cp310-cp310-linux_x86_64.whl", hash = "sha256:83d271a530392814b8c7f69382285cac7c7da79b8f5dcc6bcf56c628547bce53"},
 ]
 
 [package.dependencies]
@@ -422,10 +415,8 @@ typing-extensions = "*"
 scipy = ["scipy"]
 
 [package.source]
-type = "legacy"
-url = "https://download.pytorch.org/whl/cu117"
-reference = "pytorch"
-
+type = "url"
+url = "https://download.pytorch.org/whl/cu117/torchvision-0.14.1%2Bcu117-cp310-cp310-linux_x86_64.whl"
 [[package]]
 name = "triton"
 version = "2.0.0"
@@ -487,4 +478,4 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<3.11"
-content-hash = "612598db4b65e4eb1121c0d36b9f0ad56ea716fdd241db5a580469b73cfc3ce5"
+content-hash = "97b7de7e5d1a1a50cc8dfff29d4f13a6b083b8205cdba5a041f3d7a078039360"
