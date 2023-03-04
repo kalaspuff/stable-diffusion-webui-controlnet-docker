@@ -4,7 +4,15 @@ version = "0"
 description = ""
 authors = [""]
 
+[[tool.poetry.source]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cu117"
+default = false
+secondary = true
+
 [tool.poetry.dependencies]
 python = ">=3.10,<3.11"
-triton = { version = ">=2.0.0a2", allow-prereleases = true, markers = "platform_machine == 'x86_64' and platform_system == 'Linux'" }
-numexpr = "^2.8.0"
+triton = { version = ">=2.0.0a2", source = "pypi", allow-prereleases = true, markers = "platform_machine == 'x86_64' and platform_system == 'Linux'" }
+torch = { url = "https://download.pytorch.org/whl/cu117/torch-1.13.1%2Bcu117-cp310-cp310-linux_x86_64.whl" }
+torchvision = { version = "0.14.1+cu117", source = "pytorch", allow-prereleases = true, markers = "platform_machine == 'x86_64' and platform_system == 'Linux'" }
+numexpr = { version = "^2.8.0", source = "pypi" }
