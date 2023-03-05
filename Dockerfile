@@ -85,7 +85,8 @@ RUN wget https://raw.githubusercontent.com/camenduru/stable-diffusion-webui-scri
 RUN git clone -b v1.6 https://github.com/camenduru/deforum-for-automatic1111-webui /app/stable-diffusion-webui/extensions/deforum-for-automatic1111-webui
 RUN git clone -b v2.0 https://github.com/camenduru/stable-diffusion-webui-images-browser /app/stable-diffusion-webui/extensions/stable-diffusion-webui-images-browser
 RUN git clone -b v2.0 https://github.com/camenduru/sd-civitai-browser /app/stable-diffusion-webui/extensions/sd-civitai-browser
-RUN git clone -b v1.6 https://github.com/camenduru/sd-webui-additional-networks /app/stable-diffusion-webui/extensions/sd-webui-additional-networks
+RUN git clone -b v1.6 https://github.com/camenduru/sd-webui-additional-networks /app/stable-diffusion-webui/extensions/sd-webui-additional-networks \
+    && mkdir -p /app/stable-diffusion-webui/extensions/sd-webui-additional-networks/models/LoRA
 RUN git clone https://github.com/Mikubill/sd-webui-controlnet /app/stable-diffusion-webui/extensions/sd-webui-controlnet \
     && (cd /app/stable-diffusion-webui/extensions/sd-webui-controlnet && git checkout 5c74f300c3ac04323963af80dd2b971a7c2b2b29) \
     && mkdir -p /app/stable-diffusion-webui/models/ControlNet
