@@ -22,9 +22,9 @@ models:
 
 ## Stable Diffusion WebUI + ControlNet
 
-Comes both with Stable Diffusion 2.1 models and Stable Diffusion 1.5 models. Comes with several popular extensions to [AUTOMATIC1111's WebUI]([https://github.com/AUTOMATIC1111/stable-diffusion-webui]), including the [ControlNet WebUI extension](https://github.com/Mikubill/sd-webui-controlnet). ControlNet models primarily works best with the SD 1.5 models at the time of writing.
+Comes both with Stable Diffusion 2.1 models and Stable Diffusion 1.5 models and bundles several popular extensions to [AUTOMATIC1111's WebUI]([https://github.com/AUTOMATIC1111/stable-diffusion-webui]), including the [ControlNet WebUI extension](https://github.com/Mikubill/sd-webui-controlnet). ControlNet models primarily works best with the SD 1.5 models at the time of writing.
 
-🐳 🤗 Builds a Docker image to be run as a [Hugging Face Space](https://huggingface.co/) using A10G or T4 hardware.
+🐳 🦄 Builds a Docker image to be run as a Space at [Hugging Face](https://huggingface.co/) using A10G or T4 hardware.
 
 ### Setup on Hugging Face
 
@@ -36,14 +36,16 @@ Comes both with Stable Diffusion 2.1 models and Stable Diffusion 1.5 models. Com
 
 ### Relevant links for more information
 
+This repo, containing the `Dockerfile`, etc. for building the image can originally be found on both [`🤗 Hugging Face ➔ carloscar/stable-diffusion-webui-docker`](https://huggingface.co/spaces/carloscar/stable-diffusion-webui-docker) and [`🐙 GitHub ➔ kalaspuff/stable-diffusion-webui-docker`](https://github.com/kalaspuff/stable-diffusion-webui-docker).
+
 #### Stable Diffusion Web UI
 
-* GitHub: [https://github.com/AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui)
+* Source Code: [https://github.com/AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui)
 * Documentation: [https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki)
 
 #### WebUI extension for ControlNet
 
-* GitHub: [https://github.com/Mikubill/sd-webui-controlnet](https://github.com/Mikubill/sd-webui-controlnet)
+* Source Code: [https://github.com/Mikubill/sd-webui-controlnet](https://github.com/Mikubill/sd-webui-controlnet)
 
 #### ControlNet models
 
@@ -87,3 +89,16 @@ Some models such as additional checkpoints, VAE, LoRA, etc. may already be prese
 * See [https://huggingface.co/models?filter=stable-diffusion](https://huggingface.co/models?filter=stable-diffusion) and [https://civitai.com/](https://civitai.com/) for more.
 
 Visit the individual model pages for more information on the models and their licenses.
+
+### Extensions
+
+* [GitHub ➔ deforum-art/deforum-for-automatic1111-webui](https://github.com/deforum-art/deforum-for-automatic1111-webui)
+* [GitHub ➔ yfszzx/stable-diffusion-webui-images-browser](https://github.com/yfszzx/stable-diffusion-webui-images-browser)
+* [GitHub ➔ Vetchems/sd-civitai-browser](https://github.com/Vetchems/sd-civitai-browser)
+* [GitHub ➔ kohya-ss/sd-webui-additional-networks](https://github.com/kohya-ss/sd-webui-additional-networks)
+* [GitHub ➔ https://github.com/Mikubill/sd-webui-controlnet](https://github.com/Mikubill/sd-webui-controlnet)
+
+### Additional acknowledgements
+
+A lot of inspiration for this Docker build comes from [GitHub ➔ camenduru](https://github.com/camenduru). Amazing things! 🙏
+
