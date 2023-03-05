@@ -19,8 +19,8 @@ function download-model() {
         *) echo "error - unknown first argument: '$1' (valid options are --checkpoint, --lora, --vae or --control-net):"; echo "\$ download-model $1 \"$2\" \"$3\""; return 1;;
     esac
 
-    echo "\$ download-model $_option \"$2\" \"$3\""
-    aria2c --console-log-level=error -c -x 16 -s 16 -k 1M $_url -d $_dir -o $_filename
+    echo "\$ download-model $_option \"$2\" \"$3\"" ; echo ""
+    aria2c --console-log-level=error -c -x 16 -s 16 -k 1M $_url -d $_dir -o $_filename && echo ""
 }
 
 ## ----------------------------
