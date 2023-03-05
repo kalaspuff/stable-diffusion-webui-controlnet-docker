@@ -5,7 +5,7 @@ import sys
 
 def on_start():
     print("---------------")
-    print("Executing './on_start.sh' (downloads models, etc.)")
+    print("Starting script './on_start.sh' to downloads models ...")
     print("---------------")
     result = subprocess.run("./on_start.sh", shell=True, env=os.environ)
     if result.returncode != 0:
