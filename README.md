@@ -16,6 +16,8 @@ models:
   - lllyasviel/ControlNet
   - webui/ControlNet-modules-safetensors
   - dreamlike-art/dreamlike-diffusion-1.0
+  - Anashel/rpg
+  - Lykon/DreamShaper
 ---
 
 ## Stable Diffusion WebUI + ControlNet
