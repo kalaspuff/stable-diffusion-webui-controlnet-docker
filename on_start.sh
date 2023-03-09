@@ -7,7 +7,7 @@ function download-model() {
     local _url=$3
     local _dir
 
-    ! [ $# -eq 3 ] && (echo "usage: "; for o in checkpoint lora vae control-net; do echo "  \$ download-model --$o <filename> <url>"; done) || true
+    ! [ $# -eq 3 ] && (echo "usage: "; for o in checkpoint lora vae control-net embedding; do echo "  \$ download-model --$o <filename> <url>"; done) || true
     [ $# -eq 0 ] && return 0 || ! [ $# -eq 3 ] && (echo ""; echo "error - invalid number of arguments (expected 3, received $#)"; echo -n "\$ download-model $1"; (for arg in "${@: 2}"; do echo -n " \"${arg//\"/\\\"}\""; done) && echo "") && return 1 || true
 
     case ${_option,,} in
@@ -15,8 +15,9 @@ function download-model() {
         --lora) _dir="/app/stable-diffusion-webui/extensions/sd-webui-additional-networks/models/LoRA";;
         --vae) _dir="/app/stable-diffusion-webui/models/VAE";;
         --control-net) _dir="/app/stable-diffusion-webui/models/ControlNet";;
+        --embedding) _dir="/app/stable-diffusion-webui/embeddings";;
 
-        *) echo "error - unknown first argument: '$1' (valid options are --checkpoint, --lora, --vae or --control-net):"; echo "\$ download-model $1 \"$2\" \"$3\""; return 1;;
+        *) echo "error - unknown first argument: '$1' (valid options are --checkpoint, --lora, --vae, --control-net or --embedding):"; echo "\$ download-model $1 \"$2\" \"$3\""; return 1;;
     esac
 
     echo "\$ download-model $_option \"$2\" \"$3\"" ; echo ""
@@ -57,6 +58,9 @@ download-model --control-net "control_scribble-fp16.safetensors" "https://huggin
 
 ## ----------------------------
 
+## Embedding · bad_prompt_version2
+download-model --embedding "bad_prompt_version2.pt" "https://huggingface.co/datasets/Nerfgun3/bad_prompt/resolve/72fd9d6011c2ba87b5847b7e45e6603917e3cbed/bad_prompt_version2.pt"
+
 ## Checkpoint · The Ally's Mix III: Revolutions:
 download-model --checkpoint "theAllysMixIII_v10.safetensors" "https://civitai.com/api/download/models/12763?type=Model&format=SafeTensor"
 
@@ -91,6 +95,7 @@ download-model --checkpoint "theAllysMixIII_v10.safetensors" "https://civitai.co
 ## download-model --lora <filename> <url>
 ## download-model --vae <filename> <url>
 ## download-model --control-net <filename> <url>
+## download-model --embedding <filename> <url>
 
 ## ----------------------------
 

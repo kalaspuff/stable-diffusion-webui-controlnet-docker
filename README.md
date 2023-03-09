@@ -88,6 +88,7 @@ Some models such as additional checkpoints, VAE, LoRA, etc. may already be prese
 * [Checkpoint · A to Zovya RPG Artist's Tools (1.5 & 2.1)](https://civitai.com/models/8124/a-to-zovya-rpg-artists-tools-15-and-21)
 * [LoRA · epi_noiseoffset v2](https://civitai.com/models/13941/epinoiseoffset)
 * [VAE · sd-vae-ft-mse-original](https://huggingface.co/stabilityai/sd-vae-ft-mse-original)
+* [Embedding · bad_prompt_version2](https://huggingface.co/datasets/Nerfgun3/bad_prompt)
 * See [https://huggingface.co/models?filter=stable-diffusion](https://huggingface.co/models?filter=stable-diffusion) and [https://civitai.com/](https://civitai.com/) for more.
 
 Visit the individual model pages for more information on the models and their licenses.
