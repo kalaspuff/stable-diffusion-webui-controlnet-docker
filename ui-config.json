@@ -1,6 +1,6 @@
 {
     "txt2img/Prompt/visible": true,
-    "txt2img/Prompt/value": "",
+    "txt2img/Prompt/value": "the most beautiful artwork in the world, (masterpiece:1.5), (hd), (8k), ultra detailed, best quality, film grain, (cinematic lighting), dramatic, dramatic (complimentary colors), artstation, (award winning), (HDR)",
     "txt2img/Negative prompt/visible": true,
     "txt2img/Negative prompt/value": "(worst quality:1.4), (low quality:1.4), (monochrome:1.1), (bad_prompt_version2:0.8), (undersaturated:1.3), bad art, text, jpeg, watermark, artist sign, blurry, out of frame, ((disfigured)), deformations, extra limb, missing limbs, floating limbs, poorly drawn face, poorly drawn hands, missing fingers, split screen, bad hands, missing fingers, (malformed limbs), ((missing arms)), ((missing legs)), (((extra arms))), (((extra legs))), mutation, mutated hands, (fused fingers), (too many fingers), (((long neck))), roothand, crabhand, vinehand, pincers, normal quality, cross eyed, bad anatomy, deformed, surreal, cloned face, squinting",
     "txt2img/Style 1/value": "None",
@@ -104,7 +104,7 @@
     "txt2img/Make Zip when Save?/visible": true,
     "txt2img/Make Zip when Save?/value": false,
     "img2img/Prompt/visible": true,
-    "img2img/Prompt/value": "",
+    "img2img/Prompt/value": "the most beautiful artwork in the world, (masterpiece:1.5), (hd), (8k), ultra detailed, best quality, film grain, (cinematic lighting), dramatic, dramatic (complimentary colors), artstation, (award winning), (HDR)",
     "img2img/Negative prompt/visible": true,
     "img2img/Negative prompt/value": "(worst quality:1.4), (low quality:1.4), (monochrome:1.1), (bad_prompt_version2:0.8), (undersaturated:1.3), bad art, text, jpeg, watermark, artist sign, blurry, out of frame, ((disfigured)), deformations, extra limb, missing limbs, floating limbs, poorly drawn face, poorly drawn hands, missing fingers, split screen, bad hands, missing fingers, (malformed limbs), ((missing arms)), ((missing legs)), (((extra arms))), (((extra legs))), mutation, mutated hands, (fused fingers), (too many fingers), (((long neck))), roothand, crabhand, vinehand, pincers, [low_resolution], normal quality, cross eyed, bad anatomy, very thin legs, very thin arms, deformed, surreal, cloned face, squinting",
     "img2img/Style 1/value": "None",
