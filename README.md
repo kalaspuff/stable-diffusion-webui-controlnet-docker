@@ -22,7 +22,9 @@ models:
 
 ## Stable Diffusion WebUI + ControlNet
 
-Comes both with Stable Diffusion 2.1 models and Stable Diffusion 1.5 models and bundles several popular extensions to [AUTOMATIC1111's WebUI]([https://github.com/AUTOMATIC1111/stable-diffusion-webui]), including the [ControlNet WebUI extension](https://github.com/Mikubill/sd-webui-controlnet). ControlNet models primarily works best with the SD 1.5 models at the time of writing.
+Private image builds with both with Stable Diffusion 2.1 models and Stable Diffusion 1.5 models and bundles several popular extensions to [AUTOMATIC1111's WebUI]([https://github.com/AUTOMATIC1111/stable-diffusion-webui]), including the [ControlNet WebUI extension](https://github.com/Mikubill/sd-webui-controlnet). ControlNet models primarily works best with the SD 1.5 models at the time of writing.
+
+Shared UI space would usually load with a model based on Stable Diffusion 1.5.
 
 🐳 🦄 Builds a Docker image to be run as a Space at [Hugging Face](https://huggingface.co/) using A10G or T4 hardware.
 
@@ -30,7 +32,7 @@ Comes both with Stable Diffusion 2.1 models and Stable Diffusion 1.5 models and 
 
 1. Duplicate this space to your Hugging Face account or clone this repo to your account.
 2. Under the *"Settings"* tab of your space you can choose which hardware for your space, that you will also be billed for.
-3. The [`on_start.sh`](./on_start.sh) file will be run when the container is started, right before the WebUI is initiated. This is where you can install any additional extensions or models you may need.
+3. The [`on_start.sh`](./on_start.sh) file will be run when the container is started, right before the WebUI is initiated. This is where you can install any additional extensions or models you may need. Make sure the env value `IS_SHARED_UI` is set to `0` or is unset for your space, or else only the lightweight model installation will run and some features will be disabled.
 
 ---
 
@@ -99,7 +101,7 @@ Visit the individual model pages for more information on the models and their li
 * [GitHub ➔ yfszzx/stable-diffusion-webui-images-browser](https://github.com/yfszzx/stable-diffusion-webui-images-browser)
 * [GitHub ➔ Vetchems/sd-civitai-browser](https://github.com/Vetchems/sd-civitai-browser)
 * [GitHub ➔ kohya-ss/sd-webui-additional-networks](https://github.com/kohya-ss/sd-webui-additional-networks)
-* [GitHub ➔ https://github.com/Mikubill/sd-webui-controlnet](https://github.com/Mikubill/sd-webui-controlnet)
+* [GitHub ➔ Mikubill/sd-webui-controlnet](https://github.com/Mikubill/sd-webui-controlnet)
 
 ### Additional acknowledgements
 

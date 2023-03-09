@@ -80,23 +80,23 @@ COPY --chown=user:user pyproject.toml poetry.lock /app/
 RUN poetry install
 
 # AUTOMATIC1111' WebUI
-RUN git clone  https://github.com/AUTOMATIC1111/stable-diffusion-webui /app/stable-diffusion-webui \
+RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui /app/stable-diffusion-webui \
     && (cd /app/stable-diffusion-webui && git checkout 0cc0ee1bcb4c24a8c9715f66cede06601bfc00c8)
 
 # Deforum extension
-RUN git clone  https://github.com/deforum-art/deforum-for-automatic1111-webui /app/stable-diffusion-webui/extensions/deforum-for-automatic1111-webui \
+RUN git clone https://github.com/deforum-art/deforum-for-automatic1111-webui /app/stable-diffusion-webui/extensions/deforum-for-automatic1111-webui \
     && (cd /app/stable-diffusion-webui/extensions/deforum-for-automatic1111-webui && git checkout b60d999202f0fd2b386150d0938c43e639db8643)
 
 # Images Browser WebUI extension
-RUN git clone -b v2.0 https://github.com/yfszzx/stable-diffusion-webui-images-browser /app/stable-diffusion-webui/extensions/stable-diffusion-webui-images-browser \
+RUN git clone https://github.com/yfszzx/stable-diffusion-webui-images-browser /app/stable-diffusion-webui/extensions/stable-diffusion-webui-images-browser \
     && (cd /app/stable-diffusion-webui/extensions/stable-diffusion-webui-images-browser && git checkout a42c7a30181636a05815e62426d5eff4d3340529)
 
 # CiviTAI Browser WebUI extension
-RUN git clone -b v2.0 https://github.com/Vetchems/sd-civitai-browser /app/stable-diffusion-webui/extensions/sd-civitai-browser \
+RUN git clone https://github.com/Vetchems/sd-civitai-browser /app/stable-diffusion-webui/extensions/sd-civitai-browser \
     && (cd /app/stable-diffusion-webui/extensions/sd-civitai-browser && git checkout b25a5daf7df3f6340d3e243d533228d8ade5288d)
 
 # Additional Networks WebUI extension
-RUN git clone -b v1.6 https://github.com/kohya-ss/sd-webui-additional-networks /app/stable-diffusion-webui/extensions/sd-webui-additional-networks \
+RUN git clone https://github.com/kohya-ss/sd-webui-additional-networks /app/stable-diffusion-webui/extensions/sd-webui-additional-networks \
     && (cd /app/stable-diffusion-webui/extensions/sd-webui-additional-networks && git checkout 822f2136fa6d63b85663597b03ef3edafab01187) \
     && mkdir -p /app/stable-diffusion-webui/extensions/sd-webui-additional-networks/models/LoRA
 
@@ -116,7 +116,7 @@ RUN sed -i -e 's/ outputs=\[/queue=False, &/g' modules/ui.py
 RUN sed -i -e 's/               queue=False,  /                /g' modules/ui.py
 
 # Copy startup scripts
-COPY --chown=user:user run.py on_start.sh config.json ui-config.json /app/stable-diffusion-webui/
+COPY --chown=user:user run.py on_start.sh config.json ui-config.json shared-config.json shared-ui-config.json /app/stable-diffusion-webui/
 RUN chmod +x on_start.sh
 
 EXPOSE 7860

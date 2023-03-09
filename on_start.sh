@@ -26,6 +26,32 @@ function download-model() {
 
 ## ----------------------------
 
+## Installing less models if $IS_SHARED_UI environment variable is set.
+if ! [ -z $IS_SHARED_UI ] && [ "$IS_SHARED_UI" != 0 ]; then
+    download-model --checkpoint "v1-5-pruned-emaonly.safetensors" "https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/39593d5650112b4cc580433f6b0435385882d819/v1-5-pruned-emaonly.safetensors"
+    download-model --checkpoint "v1-5-pruned-emaonly.yaml" "https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/39593d5650112b4cc580433f6b0435385882d819/v1-inference.yaml"
+    download-model --control-net "cldm_v15.yaml" "https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/87c3affbcad3baec52ffe39cac3a15a94902aed3/cldm_v15.yaml"
+    download-model --control-net "control_canny-fp16.safetensors" "https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/87c3affbcad3baec52ffe39cac3a15a94902aed3/control_canny-fp16.safetensors"
+    download-model --control-net "control_depth-fp16.safetensors" "https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/87c3affbcad3baec52ffe39cac3a15a94902aed3/control_depth-fp16.safetensors"
+    download-model --control-net "control_normal-fp16.safetensors" "https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/87c3affbcad3baec52ffe39cac3a15a94902aed3/control_normal-fp16.safetensors"
+    download-model --control-net "control_openpose-fp16.safetensors" "https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/87c3affbcad3baec52ffe39cac3a15a94902aed3/control_openpose-fp16.safetensors"
+    download-model --control-net "control_scribble-fp16.safetensors" "https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/87c3affbcad3baec52ffe39cac3a15a94902aed3/control_scribble-fp16.safetensors"
+    download-model --checkpoint "theAllysMixIII_v10.safetensors" "https://civitai.com/api/download/models/12763?type=Model&format=SafeTensor"
+    sed -i -e '/(modelmerger_interface, \"Checkpoint Merger\", \"modelmerger\"),/d' /app/stable-diffusion-webui/modules/ui.py
+    sed -i -e '/(train_interface, \"Train\", \"ti\"),/d' /app/stable-diffusion-webui/modules/ui.py
+    sed -i -e '/extensions_interface, \"Extensions\", \"extensions\"/d' /app/stable-diffusion-webui/modules/ui.py
+    sed -i -e '/settings_interface, \"Settings\", \"settings\"/d' /app/stable-diffusion-webui/modules/ui.py
+    rm -rf /app/stable-diffusion-webui/scripts /app/stable-diffusion-webui/extensions/deforum-for-automatic1111-webui /app/stable-diffusion-webui/extensions/stable-diffusion-webui-images-browser /app/stable-diffusion-webui/extensions/sd-civitai-browser /app/stable-diffusion-webui/extensions/sd-webui-additional-networks
+    cp -f shared-config.json config.json
+    cp -f shared-ui-config.json ui-config.json
+    exit 0
+fi
+## End of lightweight installation for $IS_SHARED_UI setup.
+
+## ----------------------------
+## env $IS_SHARED_UI is not set
+## ----------------------------
+
 ## Stable Diffusion 2.1 · 768 base model:
 download-model --checkpoint "v2-1_768-ema-pruned.safetensors" "https://huggingface.co/stabilityai/stable-diffusion-2-1/resolve/36a01dc742066de2e8c91e7cf0b8f6b53ef53da1/v2-1_768-ema-pruned.safetensors"
 download-model --checkpoint "v2-1_768-ema-pruned.yaml" "https://raw.githubusercontent.com/Stability-AI/stablediffusion/fc1488421a2761937b9d54784194157882cbc3b1/configs/stable-diffusion/v2-inference-v.yaml"
@@ -60,6 +86,8 @@ download-model --control-net "control_scribble-fp16.safetensors" "https://huggin
 
 ## Embedding · bad_prompt_version2
 download-model --embedding "bad_prompt_version2.pt" "https://huggingface.co/datasets/Nerfgun3/bad_prompt/resolve/72fd9d6011c2ba87b5847b7e45e6603917e3cbed/bad_prompt_version2.pt"
+
+## ----------------------------
 
 ## Checkpoint · The Ally's Mix III: Revolutions:
 download-model --checkpoint "theAllysMixIII_v10.safetensors" "https://civitai.com/api/download/models/12763?type=Model&format=SafeTensor"
