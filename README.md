@@ -36,6 +36,8 @@ Comes both with Stable Diffusion 2.1 models and Stable Diffusion 1.5 models and 
 
 ### Relevant links for more information
 
+#### Repo for this builder
+
 This repo, containing the `Dockerfile`, etc. for building the image can originally be found on both [`🤗 Hugging Face ➔ carloscar/stable-diffusion-webui-docker`](https://huggingface.co/spaces/carloscar/stable-diffusion-webui-docker) and [`🐙 GitHub ➔ kalaspuff/stable-diffusion-webui-docker`](https://github.com/kalaspuff/stable-diffusion-webui-docker).
 
 #### Stable Diffusion Web UI
