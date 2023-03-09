@@ -27,7 +27,7 @@ function download-model() {
 ## ----------------------------
 
 ## Installing less models if $IS_SHARED_UI environment variable is set.
-if ! [ -z $IS_SHARED_UI ] && [ "$IS_SHARED_UI" != 0 ]; then
+if [ ${IS_SHARED_UI:-0} != 0 ]; then
     download-model --checkpoint "v1-5-pruned-emaonly.safetensors" "https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/39593d5650112b4cc580433f6b0435385882d819/v1-5-pruned-emaonly.safetensors"
     download-model --checkpoint "v1-5-pruned-emaonly.yaml" "https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/39593d5650112b4cc580433f6b0435385882d819/v1-inference.yaml"
     download-model --control-net "cldm_v15.yaml" "https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/87c3affbcad3baec52ffe39cac3a15a94902aed3/cldm_v15.yaml"
