@@ -41,7 +41,7 @@ if [ ${IS_SHARED_UI:-0} != 0 ]; then
     download-model --control-net "control_normal-fp16.safetensors" "https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/87c3affbcad3baec52ffe39cac3a15a94902aed3/control_normal-fp16.safetensors"
     download-model --control-net "control_openpose-fp16.safetensors" "https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/87c3affbcad3baec52ffe39cac3a15a94902aed3/control_openpose-fp16.safetensors"
     download-model --control-net "control_scribble-fp16.safetensors" "https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/87c3affbcad3baec52ffe39cac3a15a94902aed3/control_scribble-fp16.safetensors"
-    download-model --checkpoint "DreamShaper_3.31_baked_vae-inpainting.inpainting.safetensors" "https://huggingface.co/Lykon/DreamShaper/resolve/d227e39aab5e360aec6401be916025ddfc8127bd/DreamShaper_3.31_baked_vae-inpainting.inpainting.safetensors"
+    download-model --checkpoint "AtoZovyaRPGArtistTools15_sd15V1.safetensors" "https://civitai.com/api/download/models/10185"
     download-model --embedding "bad_prompt_version2.pt" "https://huggingface.co/datasets/Nerfgun3/bad_prompt/resolve/72fd9d6011c2ba87b5847b7e45e6603917e3cbed/bad_prompt_version2.pt"
     sed -i -e '/(modelmerger_interface, \"Checkpoint Merger\", \"modelmerger\"),/d' /app/stable-diffusion-webui/modules/ui.py
     sed -i -e '/(train_interface, \"Train\", \"ti\"),/d' /app/stable-diffusion-webui/modules/ui.py
