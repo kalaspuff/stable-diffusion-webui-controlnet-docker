@@ -116,7 +116,7 @@ RUN sed -i -e 's/ outputs=\[/queue=False, &/g' modules/ui.py
 RUN sed -i -e 's/               queue=False,  /                /g' modules/ui.py
 
 # Copy startup scripts
-COPY --chown=user:user run.py on_start.sh config.json ui-config.json shared-config.json shared-ui-config.json /app/stable-diffusion-webui/
+COPY --chown=user:user run.py on_start.sh config.json ui-config.json shared-config.json shared-ui-config.json header_patch.py /app/stable-diffusion-webui/
 RUN chmod +x on_start.sh
 
 EXPOSE 7860

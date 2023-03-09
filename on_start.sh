@@ -41,6 +41,7 @@ if [ ${IS_SHARED_UI:-0} != 0 ]; then
     sed -i -e '/(train_interface, \"Train\", \"ti\"),/d' /app/stable-diffusion-webui/modules/ui.py
     sed -i -e '/extensions_interface, \"Extensions\", \"extensions\"/d' /app/stable-diffusion-webui/modules/ui.py
     sed -i -e '/settings_interface, \"Settings\", \"settings\"/d' /app/stable-diffusion-webui/modules/ui.py
+    sed -i -e '/demo:/r /app/stable-diffusion-webui/header_patch.py' /app/stable-diffusion-webui/modules/ui.py
     rm -rf /app/stable-diffusion-webui/scripts /app/stable-diffusion-webui/extensions/deforum-for-automatic1111-webui /app/stable-diffusion-webui/extensions/stable-diffusion-webui-images-browser /app/stable-diffusion-webui/extensions/sd-civitai-browser /app/stable-diffusion-webui/extensions/sd-webui-additional-networks
     cp -f shared-config.json config.json
     cp -f shared-ui-config.json ui-config.json
