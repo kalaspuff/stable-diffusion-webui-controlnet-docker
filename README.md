@@ -1,5 +1,5 @@
 ---
-title: Stable Diffusion WebUI + ControlNet
+title: Stable Diffusion WebUI ControlNet
 emoji: 🦄
 colorFrom: pink
 colorTo: yellow
@@ -40,7 +40,7 @@ Shared UI space would usually load with a model based on Stable Diffusion 1.5.
 
 #### Repo for this builder
 
-This repo, containing the `Dockerfile`, etc. for building the image can originally be found on both [`🤗 Hugging Face ➔ carloscar/stable-diffusion-webui-docker`](https://huggingface.co/spaces/carloscar/stable-diffusion-webui-docker) and [`🐙 GitHub ➔ kalaspuff/stable-diffusion-webui-docker`](https://github.com/kalaspuff/stable-diffusion-webui-docker).
+This repo, containing the `Dockerfile`, etc. for building the image can originally be found on both [`🤗 Hugging Face ➔ carloscar/stable-diffusion-webui-controlnet-docker`](https://huggingface.co/spaces/carloscar/stable-diffusion-webui-controlnet-docker) and [`🐙 GitHub ➔ kalaspuff/stable-diffusion-webui-controlnet-docker`](https://github.com/kalaspuff/stable-diffusion-webui-controlnet-docker).
 
 #### Stable Diffusion Web UI
 
@@ -106,4 +106,3 @@ Visit the individual model pages for more information on the models and their li
 ### Additional acknowledgements
 
 A lot of inspiration for this Docker build comes from [GitHub ➔ camenduru](https://github.com/camenduru). Amazing things! 🙏
-

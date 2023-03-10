@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "stable-diffusion-webui-docker"
 version = "0"
-repository = "https://github.com/kalaspuff/stable-diffusion-webui-docker"
-homepage = "https://huggingface.co/spaces/carloscar/stable-diffusion-webui-docker"
+repository = "https://github.com/kalaspuff/stable-diffusion-webui-controlnet-docker"
+homepage = "https://huggingface.co/spaces/carloscar/stable-diffusion-webui-controlnet-docker"
 description = "Build configuration for Docker to set up AUTOMATIC1111's Stable Diffusion WebUI + Mikubill's ControlNet extension to run on a GPU-enabled server."
 authors = ["Carl Oscar Aaro <hello@carloscar.com"]
 
