@@ -121,4 +121,4 @@ RUN chmod +x on_start.sh
 
 EXPOSE 7860
 
-CMD ["/opt/venv/bin/python", "run.py", "--force-enable-xformers", "--xformers", "--listen", "--enable-insecure-extension-access", "--ui-config-file", "ui-config.json", "--ui-settings-file", "config.json", "--disable-console-progressbars", "--cors-allow-origins", "huggingface.co,hf.space", "--no-progressbar-hiding", "--enable-console-prompts", "--no-download-sd-model", "--api", "--skip-version-check"]
+CMD ["/opt/venv/bin/python", "run.py", "--listen", "--enable-insecure-extension-access", "--ui-config-file", "ui-config.json", "--ui-settings-file", "config.json", "--disable-console-progressbars", "--cors-allow-origins", "huggingface.co,hf.space", "--no-progressbar-hiding", "--enable-console-prompts", "--no-download-sd-model", "--api", "--skip-version-check"]

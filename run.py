@@ -26,4 +26,10 @@ def start():
 
 
 if __name__ == "__main__":
+    import torch
+    if not torch.cuda.is_available():
+        sys.argv.extend(["--precision", "full", "--no-half", "--use-cpu", "SD", "BSRGAN", "ESRGAN", "SCUNet", "CodeFormer", "--all"])
+    else:
+        sys.argv.extend(["--force-enable-xformers", "--xformers"])
+
     start()
