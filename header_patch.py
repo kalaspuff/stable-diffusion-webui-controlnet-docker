@@ -1,5 +1,6 @@
         with gr.Box(visible=os.environ.get("SPACE_ID")):
-            if os.environ.get("SPACE_ID") and str(os.environ.get("IS_SHARED_UI", "") or "") not in ("", "0"):
+            is_shared_ui = str(os.environ.get("IS_SHARED_UI", "") or "").strip().lower() not in ("", "0", "false", "none", "no")
+            if is_shared_ui:
                 import torch
                 if not torch.cuda.is_available():
                     gr.HTML(f"""
