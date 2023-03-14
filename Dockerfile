@@ -81,11 +81,11 @@ RUN poetry install
 
 # AUTOMATIC1111' WebUI
 RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui /app/stable-diffusion-webui \
-    && (cd /app/stable-diffusion-webui && git checkout 0cc0ee1bcb4c24a8c9715f66cede06601bfc00c8)
+    && (cd /app/stable-diffusion-webui && git checkout a9fed7c364061ae6efb37f797b6b522cb3cf7aa2)
 
 # Deforum extension
 RUN git clone https://github.com/deforum-art/deforum-for-automatic1111-webui /app/stable-diffusion-webui/extensions/deforum-for-automatic1111-webui \
-    && (cd /app/stable-diffusion-webui/extensions/deforum-for-automatic1111-webui && git checkout b60d999202f0fd2b386150d0938c43e639db8643)
+    && (cd /app/stable-diffusion-webui/extensions/deforum-for-automatic1111-webui && git checkout 2366bfdb47c226df0d14e712445414e459febad3)
 
 # Images Browser WebUI extension
 RUN git clone https://github.com/yfszzx/stable-diffusion-webui-images-browser /app/stable-diffusion-webui/extensions/stable-diffusion-webui-images-browser \
@@ -97,12 +97,12 @@ RUN git clone https://github.com/Vetchems/sd-civitai-browser /app/stable-diffusi
 
 # Additional Networks WebUI extension
 RUN git clone https://github.com/kohya-ss/sd-webui-additional-networks /app/stable-diffusion-webui/extensions/sd-webui-additional-networks \
-    && (cd /app/stable-diffusion-webui/extensions/sd-webui-additional-networks && git checkout 822f2136fa6d63b85663597b03ef3edafab01187) \
+    && (cd /app/stable-diffusion-webui/extensions/sd-webui-additional-networks && git checkout d2758b6c8e2e8e956865a87b31fd74d3d7c010cb) \
     && mkdir -p /app/stable-diffusion-webui/extensions/sd-webui-additional-networks/models/LoRA
 
 # ControlNet WebUI extension
 RUN git clone https://github.com/Mikubill/sd-webui-controlnet /app/stable-diffusion-webui/extensions/sd-webui-controlnet \
-    && (cd /app/stable-diffusion-webui/extensions/sd-webui-controlnet && git checkout 5c74f300c3ac04323963af80dd2b971a7c2b2b29) \
+    && (cd /app/stable-diffusion-webui/extensions/sd-webui-controlnet && git checkout 274dd5df217a03e059e9cf052447aece81bbd1cf) \
     && mkdir -p /app/stable-diffusion-webui/models/ControlNet
 
 # Prepare WebUI environment
