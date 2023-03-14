@@ -29,3 +29,4 @@ pip-log.txt
 pip-delete-this-directory.txt
 /dist
 /.make.functions.sh
+/.vscode
